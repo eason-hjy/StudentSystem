@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <link rel="stylesheet" type="text/css" href="../../resources/center.css" />
+    <h:head>
+        <title>学生成绩管理系统</title>
+    </h:head>
+    <h:body>
+        <div>
+            <h:form>
+             <table>
+               <tr><td> 学号：<h:inputText id="a1" value="#{course.sid}"></h:inputText></td><td>
+            <h:commandButton value="获取成绩">
+               <f:ajax execute="a1" render="da ci cn si cs" listener="#{course.selectbysid()}"></f:ajax>
+            </h:commandButton>
+              </td>
+              </tr>     
+            <tr>
+            <td>课程名：<h:inputText id="a2" value="#{course.cname}"></h:inputText></td><td>
+            <h:commandButton value="获取成绩">
+               <f:ajax execute="a2" render="da ci cn si cs" listener="#{course.selectbycname()}"></f:ajax>
+            </h:commandButton>
+                </td>     
+            </tr>   
+            </table>
+                <h:dataTable id="da" value="#{course.courselist}" var="o">
+                <h:column id="ci">
+                    <f:facet name="header">课程编号</f:facet>#{o.cid}
+                </h:column>
+                <h:column id="cn">
+                    <f:facet name="header">课程名字</f:facet>#{o.cname}
+                </h:column>
+                <h:column id="si">
+                    <f:facet name="header">学生号</f:facet>#{o.sid}
+                </h:column>
+                <h:column id="cs">
+                    <f:facet name="header">学生成绩</f:facet>
+                    <h:inputText value="#{o.cscore}"></h:inputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Action</f:facet>
+                    <h:commandLink value="提交" action="#{course.editscore(o)}" />
+                </h:column>
+            </h:dataTable>
+                <h2>添加学生成绩</h2>
+            <table>
+                <tr>
+                    <td>学生号：</td>
+                    <td><h:inputText size="20" value="#{course.sid}" /></td>
+                </tr>
+                <tr>
+                    <td>课程编号 :</td>
+                    <td><h:inputText size="20" value="#{course.cid}" /></td>
+                </tr>
+                <tr>
+                    <td>课程名 :</td>
+                    <td><h:inputText size="20" value="#{course.cname}" /></td>
+                </tr>
+                <tr>
+                    <td>该科成绩 :</td>
+                    <td><h:inputText size="20" value="#{course.cscore}" /></td>
+                </tr>
+            </table>
+            <h:commandButton value="Add" action="#{course.addAction()}" />
+            <h:commandButton value="back" action="/index1/tea.xhtml" />
+            </h:form>
+        </div>
+    </h:body>
+</html>
+

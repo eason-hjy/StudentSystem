@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <link rel="stylesheet" type="text/css" href="resources/center.css" />
+    <h:head>
+       <title>学生成绩管理系统</title>
+    </h:head>
+    <h:body>
+         <div>
+        <h:form>
+            <table>
+                <tr><td>
+            <h:outputLabel for="sid" value="学号"/></td>
+           <td><h:inputText id="sid" value="#{student.sid}">
+            </h:inputText></td>
+            </tr>
+                <tr><td>
+            <h:outputLabel for="pass" value="用户密码 "/></td>
+            <td><h:inputSecret id="pass" value="#{student.spassword}">
+            </h:inputSecret></td>
+            </tr>
+             <tr>
+            <center>
+           <td><h:commandButton action="#{student.sign()}" value="登录"/></td>  
+            <td><h:commandButton  value="重置" type="reset"/> </td>  
+             </center>
+             </tr>
+            </table>
+        </h:form>
+            </div>
+    </h:body>
+</html>
+

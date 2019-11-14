@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <link rel="stylesheet" type="text/css" href="../../resources/center.css" />
+    <h:head>
+        <title>学生成绩管理系统</title>
+    </h:head>
+    <h:body>
+        <div>
+            <h:form><center>
+            <h:commandButton value="刷新">
+               <f:ajax  render="da ci cn si cs" listener="#{course.select()}"></f:ajax>
+            </h:commandButton>
+                </center>
+            <h:dataTable id="da" value="#{course.courselist}" var="o">
+                <h:column id="ci">
+                    <f:facet name="header">课程编号</f:facet>#{o.cid}
+                </h:column>
+                <h:column id="cn">
+                    <f:facet name="header">课程名字</f:facet>#{o.cname}
+                </h:column>
+                <h:column id="si">
+                    <f:facet name="header">学生号</f:facet>#{o.sid}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Action</f:facet>
+                    <h:commandLink value="Delete" action="#{course.deleteAction(o)}" />
+                </h:column>
+            </h:dataTable>
+               <h:commandButton value="back" action="/index1/tea.xhtml" />
+            </h:form>
+        </div>
+    </h:body>
+</html>

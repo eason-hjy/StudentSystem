@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <link rel="stylesheet" type="text/css" href="resources/center.css" />
+    <h:head>
+        <title>学生成绩管理系统</title>
+    </h:head>
+    <h:body>
+        <div>
+            <h:form>
+                <table>
+                    <tr><td>老师姓名</td><td><h:inputText required="true" value="#{teacher.tname}"></h:inputText></td></tr>
+                    <tr><td>职工号</td><td><h:inputText required="true" value="#{teacher.tid}"><f:validateLongRange minimum="0"/></h:inputText></td></tr>
+                    <tr><td>老师账号</td><td><h:inputText required="true"  value="#{teacher.tusername}"><f:validateLength minimum="5" maximum="10" /></h:inputText></td></tr>
+                    <tr><td>密码</td><td><h:inputSecret required="true"  value="#{teacher.tpassword}"><f:validateLength minimum="5" maximum="10" /></h:inputSecret></td></tr>
+                    <tr><td><h:commandButton action="#{teacher.login()}" value="注册"/></td>  
+                    <td><h:commandButton  value="重置" type="reset"/> </td></tr>
+                </table>   
+            </h:form>
+        </div>
+    </h:body>
+</html>
+

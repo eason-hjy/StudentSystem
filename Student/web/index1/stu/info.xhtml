@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <link rel="stylesheet" type="text/css" href="../../resources/center.css" />
+    <h:head>
+        <title>学生成绩管理系统</title>
+    </h:head>
+    <h:body>
+        <div>
+            <h:form>
+                <table id="table">
+                    <tr><td>学生姓名:</td><td><h:inputText id="sn" value="#{student.sname}"></h:inputText></td></tr>
+                    <tr><td>学号:</td><td><h:inputText id="si" value="#{student.sid}"></h:inputText></td></tr>
+                    <tr><td>班级:</td><td><h:inputText id="cl" value="#{student.classnumber}"></h:inputText></td></tr>
+                    <tr><td>学生账号:</td><td><h:inputText id="su" value="#{student.susername}"></h:inputText></td></tr>
+                    <tr><td>密码:</td><td><h:inputText id="sp" value="#{student.spassword}"></h:inputText></td></tr>
+                    <tr><td>性别:</td><td>
+                            <h:selectOneRadio id="sex" value="#{student.sex}">
+                         <f:selectItem itemValue="0" itemLabel="男" />
+                         <f:selectItem itemValue="1" itemLabel="女" />       
+                    </h:selectOneRadio>
+                        </td></tr> 
+                    <tr><td>综合得分:</td><td><h:outputLabel id="te" value="#{student.testscore}"></h:outputLabel></td></tr>
+                    <tr><td>出勤分:</td><td><h:outputLabel id="at" value="#{student.attendance}"></h:outputLabel></td></tr>
+                    <tr><td>表现分:</td><td><h:outputLabel id="pr" value="#{student.prefence}"></h:outputLabel></td></tr>
+                </table> <center>
+                <h:commandButton value="刷新">
+                    <f:ajax execute="si" render="sn si cl su sp sex te at pr sn1 si1 cl1 su1 sp1 sex1 te1 at1 pr1" listener="#{student.getinfo()}"></f:ajax>
+                </h:commandButton>
+                    <h:commandButton value="更改">
+                        <f:ajax execute="sn si cl su sp sex te at pr" render="a" listener="#{student.edit()}"></f:ajax>   
+                    </h:commandButton>
+                    <h:outputLabel id="a"></h:outputLabel>                    
+                    </center>
+                <h2>--------保存结果-----------</h2>
+                                <table id="table">
+                    <tr><td>学生姓名:</td><td><h:outputLabel id="sn1" value="#{student.sname}"></h:outputLabel></td></tr>
+                    <tr><td>学号:</td><td><h:outputLabel id="si1" value="#{student.sid}"></h:outputLabel></td></tr>
+                    <tr><td>班级:</td><td><h:outputLabel id="cl1" value="#{student.classnumber}"></h:outputLabel></td></tr>
+                    <tr><td>学生账号:</td><td><h:outputLabel id="su1" value="#{student.susername}"></h:outputLabel></td></tr>
+                    <tr><td>密码:</td><td><h:outputLabel id="sp1" value="#{student.spassword}"></h:outputLabel></td></tr>
+                    <tr><td>性别:</td><td>
+                            <h:selectOneRadio id="sex1" value="#{student.sex}">
+                         <f:selectItem itemValue="0" itemLabel="男" />
+                         <f:selectItem itemValue="1" itemLabel="女" />       
+                    </h:selectOneRadio>
+                        </td></tr> 
+                    <tr><td>综合得分:</td><td><h:outputLabel id="te1" value="#{student.testscore}"></h:outputLabel></td></tr>
+                    <tr><td>出勤分:</td><td><h:outputLabel id="at1" value="#{student.attendance}"></h:outputLabel></td></tr>
+                    <tr><td>表现分:</td><td><h:outputLabel id="pr1" value="#{student.prefence}"></h:outputLabel></td></tr>
+                </table>
+                <h:commandButton value="back" action="/index1/stu.xhtml" />
+            </h:form>
+        </div>
+    </h:body>
+</html>
